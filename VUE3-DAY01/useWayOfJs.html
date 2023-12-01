@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./vue3.js"></script>
+</head>
+
+<body>
+    <div id='counter'>
+        <p>{{name}}:{{count}}</p>
+    </div>
+    
+</body>
+    <script>
+        const Counter = {
+            data: function () {
+                return {
+                    count: 0,
+                    name: 'Vue.js'
+                }
+            }
+        }
+        let app = Vue.createApp(Counter).mount('#counter')//创建一个应用,并传入一个组件对象,挂载到#counter上,组件对象中的data属性中的数据会被挂载到#counter上
+        console.log(app); 当数据发生变化时,会自动更新视图
+    </script>
+</html>
