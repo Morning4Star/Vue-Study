@@ -3,52 +3,60 @@
 export default {
   data() {
     return {
-      msg: 'Vite + Vue',
+      msg: '你好，Vite + Vue3',
       count: 0,
+      isActive: true,
+      classObj: {
+        active: true,
+        hh: true
+      },
+      error: {},
     }
   },
   methods: {
-    changeMsg() {
-      this.msg = 'Vite + Vue' + this.count++;
+    changeActive() {
+      this.isActive = !this.isActive;
+    },
+    changeClassObj() {
+      this.classObj.active = !this.classObj.active;
+      this.classObj.hh = !this.classObj.hh;
+    }
+  },
+  computed: {
+    classObjComputed() {
+      return {
+        active: this.isActive && !this.error,
+        hh: this.error,
+      }
     }
   },
   watch: {
-    msg(newValue, oldValue) {
-      console.log(newValue, oldValue);
-    }
+    
   }
+
 }
 </script>
 
 
 <template>
   <div>
-    <p>{{ msg }}</p>
-    <button @click="changeMsg">changeMsg</button>
+    <p class="active">Hello Vite + Vue3</p>
+    <p :class="{active:isActive}">Hello Vite + Vue3</p>
+    <p :class="{active:isActive}" class="hh">Hello Vite + Vue3</p>
+    <p :class="{active:isActive, hh:isActive}">Hello Vite + Vue3</p>
+    <p :class="classObj">Hello Vite + Vue3</p>
+    <button @click="changeActive">changeActive按钮</button>
+    <button @click="changeClassObj">changeClassObj按钮</button>
+    <p :class="classObjComputed">Hello Vite + Vue3</p>
   </div>
 </template>
 
 <style scoped>
-#d1 {
-  color: blue;
-}
-
-#d2 {
+.active {
   color: red;
+  font-size: 50px;
 }
-
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
+.hh {
+  font-size: 100px;
 }
 </style>
