@@ -1,22 +1,25 @@
 <script>
 //import HelloWorld from './components/HelloWorld.vue'
+import Content from './components/Content.vue'
 export default {
-  data() {
-    return {
-      count: 0,
-      age: 18,
-    }
-  },
-  methods: {
-   
-  }
+  data() {
+    return {
+    }
+  },
+  methods: {
+
+  },
+  components: {
+    Content,
+  }
 }
 </script>
 
 <template>
-  <div>
-    
-  </div>
+  <div>
+    <h1>我是App组件</h1>
+    <Content></Content>
+  </div>
 </template>
 
 <style scoped></style>
