@@ -27,8 +27,12 @@ export default {
     },
     data() {
         return {
-            msg:this.message
+            msg:this.message,
+            helloMsg: '我是hello组件的msg',
         }
     },
+    mounted() {
+        console.log(this.$root.rootmsg)
+    }
 }
 </script>
