@@ -19,6 +19,7 @@ export default {
             sonMsg:"我是content子组件组件的sonMsg",
         }
     },
+    
     methods: {
         submitFather() {
             this.$emit('submitFatherMsg', this.sonMsg)

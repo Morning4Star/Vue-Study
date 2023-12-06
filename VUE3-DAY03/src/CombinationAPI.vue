@@ -1,36 +1,42 @@
 <script>
-import { ref , reactive, watch, watchEffect} from 'vue'
-
+import { ref } from 'vue'
+import { reactive, toRefs} from 'vue'
 export default {
-  
   data() {
     return {
 
     }
   },
   setup() {
-    
-    let number = ref(0);
-    function changeNumber() {
-      number.value++
+    const msg = ref(0);
+    function changeMsg() {
+      msg.value++
     }
-    const obj = reactive({
+
+    let number = 0;
+    function changeNumber() {
+      number++
+    }
+
+    let obj = reactive({
       name: "张三",
       age: 18,
+      Children: {
+        name: "李四",
+        age: 20
+      }
     })
     function changeObj() {
       obj.name = "王五"
     }
-    watch(number,(newValue, olderValue)=> {
-      console.log(newValue, olderValue);
-    })
-    
-    watchEffect(()=> {
-      console.log(obj.name);
-    })
-
     return {
-      number, changeNumber, obj, changeObj
+      msg,
+      changeMsg,
+      number,
+      changeNumber,
+      obj,
+      changeObj,
+      ...toRefs(obj)
     }
 
   }
@@ -45,7 +51,10 @@ export default {
   <div>
     <h1>{{ number }}</h1>
     <button @click="changeNumber">changeNumber</button>
+    <h1>{{ msg }}</h1>
+    <button @click="changeMsg">changeMsg</button>
     <h1>{{ obj.name }}</h1>
+    <h1>{{ name }}</h1>
     <button @click="changeObj">changeObj</button>
   </div>
 </template>
